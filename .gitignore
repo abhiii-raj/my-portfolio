@@ -1,0 +1,10 @@
+# Firebase local secrets
+js/firebase-config.js
+
+# Firebase local/temporary files
+.firebase/
+firebase-debug.log
+
+# OS/editor noise
+.DS_Store
+Thumbs.db

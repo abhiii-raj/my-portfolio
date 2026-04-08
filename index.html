@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhi Raj — Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- Firebase SDK (compat mode for classic browser scripts) -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-shield">
+      <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 5 L95 25 L95 65 Q95 100 50 115 Q5 100 5 65 L5 25 Z" fill="#0033A0" stroke="#FCD116" stroke-width="3"/>
+        <text x="50" y="78" text-anchor="middle" font-family="Oswald" font-size="52" font-weight="700" fill="#FCD116">S</text>
+        <path d="M50 5 L95 25 L95 65 Q95 100 50 115 Q5 100 5 65 L5 25 Z" fill="none" stroke="#CC0000" stroke-width="1.5" stroke-dasharray="4 3"/>
+      </svg>
+    </div>
+    <p class="loader-text">Initializing...</p>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-logo">ABHI<span>RAJ</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="hero">
+    <canvas id="starsCanvas"></canvas>
+    <div class="hero-bg-glow"></div>
+    <div class="hero-cape"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge reveal-up" style="--d:0s">Full Stack Developer</div>
+      <h1 class="hero-name reveal-up" style="--d:0.15s">
+        <span class="hero-name-first">ABHI</span>
+        <span class="hero-name-last">RAJ</span>
+      </h1>
+      <p class="hero-tagline reveal-up" style="--d:0.3s">
+        Building the web at the speed of light.<br/>
+        <em>Code. Create. Conquer.</em>
+      </p>
+      <div class="hero-cta reveal-up" style="--d:0.45s">
+        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <a href="#contact" class="btn btn-ghost">Hire Me</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap" id="heroShield">
+      <div class="hero-photo-frame">
+        <img src="assets/images/myImage.png" alt="Abhi Raj" class="hero-photo"/>
+      </div>
+      <div class="hero-photo-ring ring-a"></div>
+      <div class="hero-photo-ring ring-b"></div>
+      <div class="hero-photo-badge">
+        <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M30 3 L57 15 L57 39 Q57 60 30 69 Q3 60 3 39 L3 15 Z" fill="#0033A0" stroke="#FCD116" stroke-width="2"/>
+          <text x="30" y="47" text-anchor="middle" font-family="Oswald" font-size="30" font-weight="700" fill="#FCD116">S</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section class="about" id="about">
+    <div class="section-label">— Origin Story —</div>
+    <div class="about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-card-frame">
+          <div class="about-avatar">
+            <div class="avatar-inner">
+              <span class="avatar-initials">AR</span>
+            </div>
+            <div class="avatar-ring ring-1"></div>
+            <div class="avatar-ring ring-2"></div>
+            <div class="avatar-ring ring-3"></div>
+          </div>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-num" data-target="5+">0</span><span class="stat-sym">+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="15">0</span><span class="stat-sym">+</span>
+              <span class="stat-label">Clients</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text reveal-right">
+        <h2 class="section-heading">Who Am I?</h2>
+        <p class="about-lead">A full-stack developer with an <span class="highlight-red">unwavering drive</span> to build powerful, scalable, and beautiful digital experiences.</p>
+        <p class="about-body">I thrive at the intersection of design and engineering — crafting seamless front-ends and bulletproof back-ends. Whether it's a lightning-fast React app, a robust Node.js API, or a complex database architecture, I bring <span class="highlight-yellow">heroic attention to detail</span> to every line of code.</p>
+        <p class="about-body">Born to solve problems. Trained to ship fast. Always pushing the limits of what's possible on the web.</p>
+        <div class="about-tags">
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Docker</span>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:2rem;">Let's Talk</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section class="skills" id="skills">
+    <div class="skills-bg-pattern"></div>
+    <div class="section-label">— Power Set —</div>
+    <h2 class="section-heading centered reveal-up">My Arsenal</h2>
+    <p class="section-sub centered reveal-up" style="--d:0.1s">Every great hero has a unique set of powers. Here are mine.</p>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal-up" style="--d:0.05s">
+        <div class="skill-icon">⚡</div>
+        <h3>Frontend</h3>
+        <ul>
+          <li><span>React / Next.js</span><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></li>
+          <li><span>TypeScript</span><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></li>
+          <li><span>HTML5 / CSS3</span><div class="skill-bar"><div class="skill-fill" data-width="97"></div></div></li>
+          <li><span>Tailwind CSS</span><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal-up" style="--d:0.15s">
+        <div class="skill-icon">🛡️</div>
+        <h3>Backend</h3>
+        <ul>
+          <li><span>Node.js / Express</span><div class="skill-bar"><div class="skill-fill" data-width="93"></div></div></li>
+          <li><span>REST & GraphQL</span><div class="skill-bar"><div class="skill-fill" data-width="87"></div></div></li>
+          <li><span>Python / RESTApi</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></li>
+          <li><span>Auth / JWT / OAuth</span><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal-up" style="--d:0.25s">
+        <div class="skill-icon">🗄️</div>
+        <h3>Database</h3>
+        <ul>
+          <li><span>MongoDB</span><div class="skill-bar"><div class="skill-fill" data-width="91"></div></div></li>
+          <li><span>PostgreSQL</span><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></li>
+          <li><span>Redis</span><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></li>
+          <li><span>Prisma / Mongoose</span><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal-up" style="--d:0.35s">
+        <div class="skill-icon">🚀</div>
+        <h3>DevOps & Tools</h3>
+        <ul>
+          <li><span>Docker / Kubernetes</span><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></li>
+          <li><span>AWS / Vercel</span><div class="skill-bar"><div class="skill-fill" data-width="86"></div></div></li>
+          <li><span>Git / GitHub CI/CD</span><div class="skill-bar"><div class="skill-fill" data-width="94"></div></div></li>
+          <li><span>Linux / Bash</span><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section class="projects" id="projects">
+    <div class="section-label">— Hall of Feats —</div>
+    <h2 class="section-heading centered reveal-up">Projects</h2>
+    <p class="section-sub centered reveal-up" style="--d:0.1s">A selection of battles won and missions accomplished.</p>
+
+    <div class="projects-grid">
+
+      <div class="project-card featured reveal-up" style="--d:0.05s">
+        <div class="project-badge">Featured</div>
+        <div class="project-number">01</div>
+        <div class="project-content">
+          <h3>Real-Time Fintech Trading Engine</h3>
+          <p>A full-featured e-commerce platform with real-time inventory, payments, and an admin analytics dashboard. Handles 10k+ concurrent users.</p>
+          <div class="project-tech">
+            <span>React.js</span><span>Express.js</span><span>Node.js</span><span>MongoDB</span><span>TwelveData</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="https://github.com/abhiii-raj/Real-Time-Fintech-Trading-Engine" class="proj-link ghost">GitHub →</a>
+          </div>
+        </div>
+        <div class="project-glow"></div>
+      </div>
+
+      <div class="project-card reveal-up" style="--d:0.1s">
+        <div class="project-number">02</div>
+        <div class="project-content">
+          <h3>SkyChat</h3>
+          <p>Real-time video messaging app with end-to-end encryption, file sharing, and presence indicators built on WebSockets.</p>
+          <div class="project-tech">
+            <span>React</span><span>WebSockets</span><span>PostgreSQL</span><span>Express.js</span><span>Node.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="#" class="proj-link ghost">GitHub →</a>
+          </div>
+        </div>
+        <div class="project-glow"></div>
+      </div>
+
+      <div class="project-card reveal-up" style="--d:0.15s">
+        <div class="project-number">03</div>
+        <div class="project-content">
+          <h3>Online Quiz App</h3>
+          <p>Agile project management tool with Kanban boards, sprint planning, and burndown charts. Team collaboration made effortless.</p>
+          <div class="project-tech">
+            <span>React.js</span><span>Express.js</span><span>MongoDB</span><span>Docker</span><span>Node.js</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="#" class="proj-link ghost">GitHub →</a>
+          </div>
+        </div>
+        <div class="project-glow"></div>
+      </div>
+
+      <div class="project-card reveal-up" style="--d:0.2s">
+        <div class="project-number">04</div>
+        <div class="project-content">
+          <h3>Train-Ticket Management System</h3>
+          <p>Built in Java using OOP principles, enabling efficient booking, cancellation, and passenger record handling.</p>
+          <div class="project-tech">
+            <span>Java</span><span>JDBC</span><span>SQL</span><span>OOP's</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="proj-link">Live Demo →</a>
+            <a href="https://github.com/abhiii-raj/Java-Projects." class="proj-link ghost">GitHub →</a>
+          </div>
+        </div>
+        <div class="project-glow"></div>
+      </div>
+
+      <div class="project-card cta-card reveal-up" style="--d:0.3s">
+        <div class="cta-card-inner">
+          <div class="cta-s">S</div>
+          <h3>Want to See More?</h3>
+          <p>I've got plenty more in the vault.</p>
+          <a href="https://github.com//abhiii-raj" target="_blank" class="btn btn-primary">Visit GitHub</a>
+        </div>
+        <div class="project-glow"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="contact" id="contact">
+    <div class="contact-bg"></div>
+    <div class="section-label">— Send the Signal —</div>
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <h2 class="section-heading">Let's Build Something <span class="highlight-yellow">Super.</span></h2>
+        <p class="contact-desc">Whether you have a project in mind, want to collaborate, or just want to say hi — my inbox is always open. I respond faster than a speeding bullet.</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div>
+              <span class="contact-label">Email</span>
+              <a href="mailto:abhishubhraj007@gmail.com" class="contact-val">abhishubhraj007@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">💼</span>
+            <div>
+              <span class="contact-label">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/abhiii-raj/" class="contact-val">linkedin.com/in/abhiii-raj</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">🐙</span>
+            <div>
+              <span class="contact-label">GitHub</span>
+              <a href="https://github.com/abhiii-raj" class="contact-val">github.com/abhiii-raj</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal-right" id="contactForm">
+        <input type="hidden" id="formStatus" value="idle"/>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="Clark Kent" required/>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="clark@dailyplanet.com" required/>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="I need a hero..."/>
+          <div class="form-line"></div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
+          <div class="form-line"></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-icon">🚀</span>
+        </button>
+        <div class="form-success" id="formSuccess">
+          <span>✓</span> Message sent! I'll respond at the speed of light.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="footer-shield">
+      <svg viewBox="0 0 60 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 3 L57 15 L57 39 Q57 60 30 69 Q3 60 3 39 L3 15 Z" fill="#0033A0" stroke="#FCD116" stroke-width="2"/>
+        <text x="30" y="47" text-anchor="middle" font-family="Oswald" font-size="30" font-weight="700" fill="#FCD116">S</text>
+      </svg>
+    </div>
+    <p class="footer-name">ABHI RAJ</p>
+    <p class="footer-sub">Full Stack Developer · Built with ❤️ & Kryptonian energy</p>
+  </footer>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
