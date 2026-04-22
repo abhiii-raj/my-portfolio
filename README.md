@@ -38,7 +38,7 @@ Current Hosting configuration:
 ## Firebase Console Links
 
 - Project Console: https://console.firebase.google.com/project/portfolio-60651/overview
-- Hosting URL: https://portfolio-60651.web.app
+- Hosting URL: https://abhiii-raj.web.app
 
 ## How the form works
 
@@ -103,5 +103,5 @@ npx -y firebase-tools@latest hosting:channel:list
 ## Live Deployment Status
 
 - Live Hosting channel: `live`
-- Live URL: https://portfolio-60651.web.app
+- Live URL: https://abhiii-raj.web.app
 - Firebase project ID: `portfolio-60651`

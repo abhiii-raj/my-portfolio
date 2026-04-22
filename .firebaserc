@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "portfolio-60651"
-  }
+  },
+  "targets": {
+    "portfolio-60651": {
+      "hosting": {
+        "portfolio": [
+          "abhiii-raj"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
